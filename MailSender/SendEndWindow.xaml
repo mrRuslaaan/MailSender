@@ -1,0 +1,15 @@
+﻿<Window x:Class="MailSender.SendEndWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender"
+        mc:Ignorable="d"
+        Title="ОПОВЕЩЕНИЕ" Height="175" Width="400">
+    <Grid >
+        <Label Name="lSendEnd" Content="Работа завершена" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36">
+        </Label>
+        <Button Name="btnOK" Content="OK" Width="40" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="btnOkClick" Margin="0,0,0,20">
+        </Button>
+    </Grid>
+</Window>

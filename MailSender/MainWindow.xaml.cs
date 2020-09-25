@@ -1,28 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace MailSender
+﻿namespace MailSender
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+
+        private void OnSendBtnClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            InitializeComponent();
+            var emailSend = new EmailSendServiceClass(UserEdit.Text, 
+                                                      PasswordEdit.SecurePassword, 
+                                                      Data.from, 
+                                                      Data.to, 
+                                                      Data.head, 
+                                                      Data.body, 
+                                                      Data.smptClientName, 
+                                                      Data.port);
+            emailSend.EmailSend();
+        }
+        private void ExitButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void HeadEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Data.head = Head.Text;
+        }
+
+        private void BodyEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            Data.body = Body.Text;
         }
     }
 }
