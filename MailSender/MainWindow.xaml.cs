@@ -9,20 +9,20 @@ namespace MailSender
 
         private void OnSendBtnClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (UserEdit.Text != "")
-            {
-                Data.From = UserEdit.Text;
-            }
-
-            var emailSend = new EmailSendServiceClass(Data.From,
-                                                      PasswordEdit.SecurePassword, 
-                                                      Data.To, 
-                                                      Data.Head, 
-                                                      Data.Body, 
-                                                      Data.SmptClientName, 
-                                                      Data.Port);
-            emailSend.EmailSend();
-        }
+           // if (UserEdit.Text != "")
+           // {
+           //     Data.From = UserEdit.Text;
+           // }
+           //
+           // var emailSend = new EmailSendServiceClass(Data.From,
+           //                                           PasswordEdit.SecurePassword, 
+           //                                           Data.To, 
+           //                                           Data.Head, 
+           //                                           Data.Body, 
+           //                                           Data.SmptClientName, 
+           //                                           Data.Port);
+           // emailSend.EmailSend();
+        }  //
         private void ExitButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
             Close();
@@ -30,12 +30,12 @@ namespace MailSender
 
         private void HeadEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            Data.Head = Head.Text;
+           //Data.Head = Head.Text;
         }
 
         private void BodyEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            Data.Body = Body.Text;
+            //Data.Body = Body.Text;
         }
     }
 }
