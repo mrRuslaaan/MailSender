@@ -1,4 +1,7 @@
-﻿namespace MailSender
+﻿using System.Windows;
+using System.Windows.Controls;
+
+namespace MailSender
 {
     public partial class MainWindow
     {
@@ -6,14 +9,18 @@
 
         private void OnSendBtnClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            var emailSend = new EmailSendServiceClass(UserEdit.Text, 
+            if (UserEdit.Text != "")
+            {
+                Data.From = UserEdit.Text;
+            }
+
+            var emailSend = new EmailSendServiceClass(Data.From,
                                                       PasswordEdit.SecurePassword, 
-                                                      Data.from, 
-                                                      Data.to, 
-                                                      Data.head, 
-                                                      Data.body, 
-                                                      Data.smptClientName, 
-                                                      Data.port);
+                                                      Data.To, 
+                                                      Data.Head, 
+                                                      Data.Body, 
+                                                      Data.SmptClientName, 
+                                                      Data.Port);
             emailSend.EmailSend();
         }
         private void ExitButtonClick(object sender, System.Windows.RoutedEventArgs e)
@@ -23,12 +30,12 @@
 
         private void HeadEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            Data.head = Head.Text;
+            Data.Head = Head.Text;
         }
 
         private void BodyEnter(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            Data.body = Body.Text;
+            Data.Body = Body.Text;
         }
     }
 }

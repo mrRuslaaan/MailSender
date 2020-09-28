@@ -9,19 +9,17 @@ namespace MailSender
 {
     public class EmailSendServiceClass
     {
-        private string UserName;
-        private SecureString SecurePassword;
         private string from;
+        private SecureString securePassword;
         private string to;
         private string head;
         private string body;
         private string smptName;
         private int port;
-        public EmailSendServiceClass(string _UserName,SecureString _SecurePassword, string _from, string _to, string _head, string _body, string _smptName, int _port)
+        public EmailSendServiceClass(string _UserName,SecureString _SecurePassword, string _to, string _head, string _body, string _smptName, int _port)
         {
-            UserName = _UserName;
-            SecurePassword = _SecurePassword;
-            from = _from;
+            from = _UserName;
+            securePassword = _SecurePassword;
             to = _to;
             head = _head;
             body = _body;
@@ -34,14 +32,14 @@ namespace MailSender
             MailAddress sender = new MailAddress(from);
             MailAddress receiver = new MailAddress(to);
 
-            MailMessage mes = new MailMessage(from, to);
+            using MailMessage mes = new MailMessage(sender, receiver);
 
             mes.Subject = head;
             mes.Body = body;
 
-            SmtpClient smtp = new SmtpClient(smptName, port);
+            using SmtpClient smtp = new SmtpClient(smptName, port);
             smtp.EnableSsl = true;
-            smtp.Credentials = new NetworkCredential(UserName, SecurePassword);
+            smtp.Credentials = new NetworkCredential(from, securePassword);
             
             try
             {
