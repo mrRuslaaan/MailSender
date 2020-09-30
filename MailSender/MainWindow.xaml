@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
+        xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="Спаммер" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -107,7 +108,9 @@
                         <StackPanel>
                             <TextBlock Text="Календарь" TextAlignment="Center"/>
                             <Calendar SelectionMode="MultipleRange" Name="cldSchedulDateTimes"/>
-                            <StackPanel Margin="5,7">
+                            <toolKit:TimePicker>
+                            </toolKit:TimePicker>
+                            <StackPanel Margin="0 20 0 0">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
                                         <Setter Property="Margin" Value="0,3"/>
