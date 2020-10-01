@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:m="clr-namespace:MailSender.Models"
         Title="Спаммер" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -39,7 +40,7 @@
                     <ToolBarTray DockPanel.Dock="Top" Width="Auto" Height="65"  VerticalAlignment="Top">
                         <ToolBar Width="500" Height="30" Name="tbSender" Band="0" BandIndex="0">
                             <Label Name="lSender" Content="Выбрать отправителя" Width="140" Height="25"/>
-                            <ComboBox x:Name="cbSenderSelect" Width="259" Height="25" SelectedIndex="0" ToolTip="Выбрать email отправителя">
+                            <ComboBox x:Name="cbSenderSelect" Width="259" Height="25" SelectedIndex="0" ToolTip="Выбрать email отправителя" ItemsSource="{x:Static local:Data.Senders}" DisplayMemberPath="Address">
                                 
                             </ComboBox>
 
@@ -212,9 +213,7 @@
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Список писем">
                         <ListBox>
-                            <ListBoxItem>Письмо 1</ListBoxItem>
-                            <ListBoxItem>Письмо 2</ListBoxItem>
-                            <ListBoxItem>Письмо 3</ListBoxItem>
+                            
                         </ListBox>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header="Редактор">

@@ -1,16 +1,43 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Text;
+using MailSender.Models;
 
 namespace MailSender
 {
-    public static class Data
-    {        
-        public static string From { get; set; }  = "annaev.rusik@yandex.ru";
-        public static string To { get; set; } = "annaev.ruslan@gmail.com";
-        public static string Head { get; set; } = "Hello";
-        public static string Body { get; set; } = "How are you?";
-        public static string SmptClientName { get; set; } = "smtp.yandex.ru";
-        public static int Port { get; set; } = 587;
+    static class Data
+    {
+        public static List<Sender> Senders { get; } = Enumerable.Range(1, 10)
+           .Select(i => new Sender
+           {
+               Name = $"Отправитель {i}",
+               Address = $"sender_{i}@server.ru"
+           })
+           .ToList();
+
+        public static List<Recipient> Recipients { get; } = Enumerable.Range(1, 10)
+           .Select(i => new Recipient
+           {
+               Name = $"Получатель {i}",
+               Address = $"recipient_{i}@server.ru"
+           })
+           .ToList();
+
+        public static List<Server> Servers { get; } = Enumerable.Range(1, 10)
+           .Select(i => new Server
+           {
+               Address = $"smtp.server{i}.com",
+               Login = $"Login-{i}",
+               Password = $"Password-{i}",
+               UseSSL = i % 2 == 0
+           })
+           .ToList();
+
+        public static List<Message> Messages { get; } = Enumerable.Range(1, 20)
+           .Select(i => new Message
+           {
+               Subject = $"Сообщение {i}",
+               Body = $"Текст сообщения {i}"
+           })
+           .ToList();
     }
 }
