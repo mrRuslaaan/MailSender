@@ -3,6 +3,8 @@ using MailSender.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
+using MailSender.lib.Interfaces;
+using MailSender.lib.Service;
 
 namespace MailSender
 {
@@ -20,6 +22,7 @@ namespace MailSender
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
             services.AddSingleton<MainWindowViewModel>();
+            services.AddTransient<IMailService, SmtpMailService>();
         }
     }
 }
