@@ -4,12 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:vm="clr-namespace:MailSender.ViewModels"
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:m="clr-namespace:MailSender.Models"
-        Title="Спаммер" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
-    <DockPanel>
+        Title="{Binding Title}" 
+        Height="450" Width="800" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner">
+    <Window.DataContext>         
+            <vm:MainWindowViewModel/>
+    </Window.DataContext>    
+        <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
