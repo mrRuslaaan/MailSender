@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         xmlns:vm="clr-namespace:MailSender.ViewModels"
+        xmlns:cmd="clr-namespace:MailSender.Infrastructure.Commands"
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:m="clr-namespace:MailSender.Models"
-        Title="{Binding Title}" 
+        Title="{Binding Path=Title}" 
         Height="450" Width="800" 
         WindowStyle="None" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterOwner">
     <Window.DataContext>         
             <vm:MainWindowViewModel/>
-    </Window.DataContext>    
-        <DockPanel>
+    </Window.DataContext>
+    <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
@@ -25,7 +26,11 @@
                 <MenuItem Header="Закрыть"/>
                 <MenuItem Header="Сохранить"/>
                 <Separator/>
-                <MenuItem Header="Выход" Click="ExitButtonClick"/>
+                <MenuItem Header="Выход">
+                    <MenuItem.Command>
+                        <cmd:CloseWindowCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Сервис">
                 <MenuItem Header="Параметры"/>
@@ -48,7 +53,7 @@
                     <ToolBarTray DockPanel.Dock="Top" Width="Auto" Height="65"  VerticalAlignment="Top">
                         <ToolBar Width="500" Height="30" Name="tbSender" Band="0" BandIndex="0">
                             <Label Name="lSender" Content="Выбрать отправителя" Width="140" Height="25"/>
-                            <ComboBox x:Name="cbSenderSelect" Width="259" Height="25" SelectedIndex="0" ToolTip="Выбрать email отправителя" ItemsSource="{x:Static local:Data.Senders}" DisplayMemberPath="Address">
+                            <ComboBox x:Name="cbSenderSelect" Width="259" Height="25" SelectedIndex="0" ToolTip="Выбрать email отправителя" ItemsSource="{Binding Servers}" DisplayMemberPath="Address">
                                 
                             </ComboBox>
 

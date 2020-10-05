@@ -6,11 +6,7 @@ namespace MailSender
 {
     public partial class MainWindow
     {
-        public MainWindow() => InitializeComponent();
-        private void ExitButtonClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-            this.Close();
-        }       
+        public MainWindow() => InitializeComponent();   
 
         private void btnClock_Click(object sender, RoutedEventArgs e)
         {
