@@ -14,6 +14,8 @@ namespace MailSender.ViewModels
 {
     class MainWindowViewModel : ViewModel
     {
+        static int countOfAddRecipientWindows = 0;
+
         #region Fields
         private string _Title = "Главное окно";
 
@@ -86,6 +88,20 @@ namespace MailSender.ViewModels
         #endregion
 
         #region Commands
+        #region CreateNewRecipient
+
+        ICommand _CreateNewRecipient;
+
+        public ICommand CreateNewRecipient => _CreateNewRecipient
+            ??= new LambdaCommand(OnCreateNewRecipientCommand, CanCreateNewRecipientCommandExecute);
+        private bool CanCreateNewRecipientCommandExecute(object p) => true;
+        private void OnCreateNewRecipientCommand(object p)
+        {
+
+        }
+
+        #endregion
+
         #region GoToAddRecipient
 
         ICommand _GoToAddRecipient;
@@ -94,7 +110,13 @@ namespace MailSender.ViewModels
         private bool CanGoToAddRecipientCommandExecute(object p) => true;
         private void OnGoToAddRecipientCommand(object p)
         {
+            if (countOfAddRecipientWindows > 0 )
+            {
+                MessageBox.Show("Нельзя создать больше 1 окна");
+                return;
+            }
             AddRecipient addRecipient = new AddRecipient();
+            countOfAddRecipientWindows++;
             addRecipient.Show();
         }
         #endregion
@@ -107,6 +129,7 @@ namespace MailSender.ViewModels
         private bool CanGoToPlannerCommandExecute(object p) => true;
         private void OnGoToPlannerCommand(object p)
         {
+            //Как получить TabItem у TabConrol?
         }
         #endregion
 
@@ -130,7 +153,6 @@ namespace MailSender.ViewModels
                 window = Application.Current.Windows
                 .Cast<Window>()
                 .FirstOrDefault(w => w.IsActive);
-
 
             window?.Close();
         }

@@ -105,7 +105,12 @@
                     </ToolBarTray>
                     <GroupBox Header="Списки получателей">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <local:RecipientsView/>
+                            <local:RecipientsEditor Grid.Column="1"/>
                         </Grid>
                     </GroupBox>
                 </DockPanel>
