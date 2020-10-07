@@ -17,13 +17,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 >>>>>>> parent of f2ee804... Merge remote-tracking branch 'origin/lesson-1'
 
-namespace MailSender
+namespace MailSender.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+<<<<<<< HEAD:MailSender/MainWindow.xaml.cs
 <<<<<<< HEAD
         public MainWindow() => InitializeComponent();
         private void ExitButtonClick(object sender, System.Windows.RoutedEventArgs e)
@@ -40,5 +41,8 @@ namespace MailSender
             InitializeComponent();
 >>>>>>> parent of f2ee804... Merge remote-tracking branch 'origin/lesson-1'
         }
+=======
+        public MainWindow() => InitializeComponent();   
+>>>>>>> lesson-3:MailSender/Views/MainWindow.xaml.cs
     }
 }

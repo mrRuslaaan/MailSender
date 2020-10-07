@@ -18,7 +18,7 @@ namespace MailSender
            .Select(i => new Recipient
            {
                Name = $"Получатель {i}",
-               Address = $"recipient_{i}@server.ru"
+               Address = $"recipient_{i}@mail.ru"
            })
            .ToList();
 
