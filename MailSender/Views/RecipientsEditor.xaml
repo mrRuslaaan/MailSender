@@ -31,9 +31,9 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" />
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedRecipient.Id}" ></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedRecipient.Name}"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedRecipient.Address}"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedRecipient.Id, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}" ></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedRecipient.Address, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True}"></TextBox>
         <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button Content="Сохранить" Margin="10 10" >
             </Button>
