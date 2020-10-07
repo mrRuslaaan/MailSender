@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MailSender.Models
 {
-    class Message : Entity
+    public class Message : Entity
     {
         public string Subject { get; set; }
 

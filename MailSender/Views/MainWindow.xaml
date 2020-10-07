@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MailSender.Views"
         xmlns:vm="clr-namespace:MailSender.ViewModels"
         xmlns:cmd="clr-namespace:MailSender.Infrastructure.Commands"
+        
         mc:Ignorable="d"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
@@ -104,14 +105,9 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Списки получателей">
-                        <DataGrid ItemsSource="{Binding Recipients}"
-                                  SelectedItem="{Binding SelectedRecipient}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Width="30"/>
-                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="E-mail" Width="130" Binding="{Binding Address}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <Grid>
+                            <local:RecipientsView/>
+                        </Grid>
                     </GroupBox>
                 </DockPanel>
             </TabItem>

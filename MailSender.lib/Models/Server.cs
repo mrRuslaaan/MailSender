@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MailSender.Models
 {
-    class Server : NamedEntity
+    public class Server : NamedEntity
     { 
         private int _Port;
 

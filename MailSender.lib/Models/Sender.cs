@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MailSender.Models
 {
-    class Recipient : Person
+    public class Sender : Person
     {
     }
 }
