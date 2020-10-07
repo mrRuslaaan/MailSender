@@ -86,6 +86,18 @@ namespace MailSender.ViewModels
         #endregion
 
         #region Commands
+        #region GoToAddRecipient
+
+        ICommand _GoToAddRecipient;
+        public ICommand GoToAddRecipient => _GoToAddRecipient
+            ??= new LambdaCommand(OnGoToAddRecipientCommand, CanGoToAddRecipientCommandExecute);
+        private bool CanGoToAddRecipientCommandExecute(object p) => true;
+        private void OnGoToAddRecipientCommand(object p)
+        {
+            AddRecipient addRecipient = new AddRecipient();
+            addRecipient.Show();
+        }
+        #endregion
 
         #region GoToPlanner
         private ICommand _GoToPlanner;
