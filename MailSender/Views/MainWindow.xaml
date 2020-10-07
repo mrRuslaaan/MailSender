@@ -86,7 +86,7 @@
                         </ToolBar>                        
                         <ToolBar x:Name="tbPlanner" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="0" BandIndex="1" >
                             <Label x:Name="lPlanner" Content="Перейти в планировщик" Height="25" Width="Auto"/>
-                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" >
+                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" Command="{Binding GoToPlanner}">
                                 <fa:ImageAwesome Icon="Solid_Clock"/>
                             </Button>
                         </ToolBar>

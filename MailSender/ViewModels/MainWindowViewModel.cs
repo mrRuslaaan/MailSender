@@ -6,6 +6,9 @@ using MailSender.Models;
 using MailSender.ViewModels.Base;
 using MailSender.Infrastructure.Commands;
 using MailSender.lib.Interfaces;
+using MailSender.Views;
+using System.Windows.Controls;
+using Xceed.Wpf.AvalonDock.Layout;
 
 namespace MailSender.ViewModels
 {
@@ -84,6 +87,17 @@ namespace MailSender.ViewModels
 
         #region Commands
 
+        #region GoToPlanner
+        private ICommand _GoToPlanner;
+
+        public ICommand GoToPlanner => _GoToPlanner
+            ??= new LambdaCommand(OnGoToPlannerCommand, CanGoToPlannerCommandExecute);
+        private bool CanGoToPlannerCommandExecute(object p) => true;
+        private void OnGoToPlannerCommand(object p)
+        {
+        }
+        #endregion
+
         #region CloseWindowCommand
         private ICommand _CloseWindowCommand;
 
@@ -104,6 +118,7 @@ namespace MailSender.ViewModels
                 window = Application.Current.Windows
                 .Cast<Window>()
                 .FirstOrDefault(w => w.IsActive);
+
 
             window?.Close();
         }

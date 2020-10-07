@@ -1,13 +1,12 @@
-﻿using System;
+﻿using MailSender.Models.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MailSender.Models
 {
-    class Server
-    {
-        public string Address { get; set; }
-
+    class Server : NamedEntity
+    { 
         private int _Port;
 
         public int Port
@@ -20,7 +19,7 @@ namespace MailSender.Models
                 _Port = value;
             }
         }
-
+        public string Address { get; set; }
         public bool UseSSL { get; set; }
 
         public string Login { get; set; }
