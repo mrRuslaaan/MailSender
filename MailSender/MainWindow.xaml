@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
+<<<<<<< HEAD
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:m="clr-namespace:MailSender.Models"
@@ -270,4 +271,10 @@
             </TabItem>
         </TabControl>
     </DockPanel>
+=======
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+    </Grid>
+>>>>>>> parent of f2ee804... Merge remote-tracking branch 'origin/lesson-1'
 </Window>
