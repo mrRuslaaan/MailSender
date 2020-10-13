@@ -24,6 +24,7 @@ namespace MailSender.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+<<<<<<< HEAD
 <<<<<<< HEAD:MailSender/MainWindow.xaml.cs
 <<<<<<< HEAD
         public MainWindow() => InitializeComponent();
@@ -44,5 +45,8 @@ namespace MailSender.Views
 =======
         public MainWindow() => InitializeComponent();   
 >>>>>>> lesson-3:MailSender/Views/MainWindow.xaml.cs
+=======
+        public MainWindow() => InitializeComponent();
+>>>>>>> lesson-4
     }
 }

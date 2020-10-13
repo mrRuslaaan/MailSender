@@ -10,13 +10,13 @@
 <<<<<<< HEAD
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:toolKit="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:m="clr-namespace:MailSender.Models"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Path=Title}" 
         Height="450" Width="800" 
         WindowStyle="None" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterOwner">
+    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -57,7 +57,7 @@
                                 
                             </ComboBox>
 
-                            <Button x:Name="btnAddSender" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="25" ToolTip="Добавить">
+                            <Button x:Name="btnAddSender" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="25" ToolTip="Добавить" Command="{Binding GoToAddRecipient}">
                                 <fa:ImageAwesome Icon="Solid_PlusCircle"/>
                             </Button>
                             <Button x:Name="btnEditSender" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="25" Height="25" ToolTip="Редактировать">
@@ -87,7 +87,7 @@
                         </ToolBar>                        
                         <ToolBar x:Name="tbPlanner" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="230" Band="0" BandIndex="1" >
                             <Label x:Name="lPlanner" Content="Перейти в планировщик" Height="25" Width="Auto"/>
-                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" >
+                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик" Command="{Binding GoToPlanner}">
                                 <fa:ImageAwesome Icon="Solid_Clock"/>
                             </Button>
                         </ToolBar>
@@ -105,14 +105,14 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Списки получателей">
-                        <DataGrid ItemsSource="{Binding Recipients}"
-                                  SelectedItem="{Binding SelectedRecipient}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Width="30"/>
-                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="E-mail" Width="130" Binding="{Binding Address}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <local:RecipientsView/>
+                            <local:RecipientsEditor Grid.Column="1"/>
+                        </Grid>
                     </GroupBox>
                 </DockPanel>
             </TabItem>

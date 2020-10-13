@@ -1,0 +1,44 @@
+﻿<Window x:Class="MailSender.Views.AddRecipient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender.Views"
+        mc:Ignorable="d"
+        Title="AddRecipient" Height="150" Width="450"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
+    <Grid Width="Auto" Height="Auto">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="Width" Value="50"/>
+            </Style>
+
+            <Style TargetType="TextBox">
+                <Setter Property="Width" Value="300"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:"/>
+        <TextBox Grid.Row="0" Grid.Column="1"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
+        <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button Content="Создать" Margin="10 10" >
+            </Button>
+            <Button Content="Отмена" Margin="10 10" Command="{Binding CloseWindowCommand}" >
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Window>
