@@ -52,55 +52,7 @@ namespace HW6
 
             foreach(string fileName in fileNames)
             {
-                using (StreamReader reader = new StreamReader(fileName))
-                {
-                    double result = 0;
-                    double k_1 = 0;
-                    double k_2 = 0;
-                    int count = 0;
-                    string str = reader.ReadToEnd();
-
-                    string str_1 = "";
-                    for (int i = 2; i < str.Length; i++)
-                    {
-                        while (str[i].ToString() != " ") 
-                        {
-                            str_1 += str[i];
-                            if (i < str.Length)
-                                i++;
-                            if (i == str.Length)
-                                break;
-                        } 
-                        count++;
-                        if (count == 1)
-                        {
-                            k_1 = Convert.ToDouble(str_1);
-                            str_1 = "";
-                        }
-                        if (count == 2)
-                        {
-                            k_2 = Convert.ToDouble(str_1);
-                        }
-                    }                    
-                    if (str[0] == '1')
-                    {
-                        result = k_1 * k_2;
-                        Console.WriteLine("Умножение {0}", result);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Деление");
-                    }
-                    reader?.Close();
-                    using (StreamWriter writer = new StreamWriter("Result.txt", true))
-                    {
-                        writer.WriteLine(result);
-                        writer?.Close();
-                    }
-                }
-                
-                
-                
+                OpenFileForReadingAndCountAsync(fileName);
             }  
 
 
@@ -165,6 +117,69 @@ namespace HW6
 
         #region Task2
 
+        static void OpenFileForReadingAndCount(string fileName)
+        {
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                double result = 0;
+                double k_1 = 0;
+                double k_2 = 0;
+                int count = 0;
+                string str = reader.ReadToEnd();
+
+                string str_1 = "";
+                for (int i = 2; i < str.Length; i++)
+                {
+                    while (str[i].ToString() != " ")
+                    {
+                        str_1 += str[i];
+                        if (i < str.Length)
+                            i++;
+                        if (i == str.Length)
+                            break;
+                    }
+                    count++;
+                    if (count == 1)
+                    {
+                        k_1 = Convert.ToDouble(str_1);
+                        str_1 = "";
+                    }
+                    if (count == 2)
+                    {
+                        k_2 = Convert.ToDouble(str_1);
+                    }
+                }
+                if (str[0] == '1')
+                {
+                    result = k_1 * k_2;
+                    Console.WriteLine("Умножение {0}", result);
+                }
+                else
+                {
+                    Console.WriteLine("Деление");
+                }
+                reader?.Close();
+
+                WriteResultInFileAsync(result);
+            }
+        } 
+        static void WriteResultInFile(double result)
+        {
+            using (StreamWriter writer = new StreamWriter("Result.txt", true))
+            {
+                writer.WriteLine(result);
+                writer?.Close();
+            }
+        }
+
+        static async void WriteResultInFileAsync(double result)
+        {
+            await Task.Run(() => WriteResultInFile(result));
+        }
+        static async void OpenFileForReadingAndCountAsync(string fileName)
+        {
+            await Task.Run(() => OpenFileForReadingAndCount(fileName));
+        }
         #endregion
     }
 }
