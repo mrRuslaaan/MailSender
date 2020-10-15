@@ -32,10 +32,10 @@ namespace HW5
             public void Sum()
             {
                 for (int i = _n; i > 0; i--)
-                {
+                {                    
                     _sum = _sum + i;
                 }
-                Console.WriteLine(_sum);
+                Console.WriteLine("Сумма чисел до {0} равна {1}", _n, _sum);
             }
 
         }
@@ -43,7 +43,7 @@ namespace HW5
         public class FactorialThreadClass
         {
             private int _n;
-            private int _fact = 1;
+            private ulong _fact = 1;
             public FactorialThreadClass(int n)
             {
                 _n = n;
@@ -53,9 +53,9 @@ namespace HW5
             {
                 for (int i = _n; i > 0; i--)
                 {
-                    _fact = _fact * i;
+                    _fact = _fact * (ulong)i;
                 }
-                Console.WriteLine(_fact);
+                Console.WriteLine("Факториал {0} равен {1}",_n,_fact);
             }
             public int Factorial1(int n)
             {
