@@ -10,40 +10,41 @@ namespace HW6
         public static int N = 10;
         public static int[,] mas1 = new int[N, N];
         public static int[,] mas2 = new int[N, N];
+        static Semaphore sem = new Semaphore(1, 1);
 
         static void Main(string[] args)
         {
             #region Task1
             ////Parallel.Invoke(MasCreate(out mas1), MasCreate(out mas2)); как преобразовать метод MasCreate так, чтобы его можно было передать в Parellel.Invoke    
-            //Parallel.Invoke(() => 
-            //{
-            //    Console.WriteLine(DateTime.Now);
-            //    Random rand = new Random();
-            //    mas1 = new int[N, N];
-            //    int k;
-            //    for (int i = 0; i < N; i++)
-            //        for (int j = 0; j < N; j++)
-            //        {
-            //            k = rand.Next(0, 10);
-            //            mas1[i, j] = k;
-            //        }
-            //},
-            //()=> 
-            //{
-            //    Console.WriteLine(DateTime.Now);
-            //    Random rand = new Random();
-            //    mas2 = new int[N, N];
-            //    int k;
-            //    for (int i = 0; i < N; i++)
-            //        for (int j = 0; j < N; j++)
-            //        {
-            //            k = rand.Next(0, 10);
-            //            mas2[i, j] = k;
-            //        }
-            //});
-            //MasMultiplyAsync(mas1, mas2);
-            //Console.WriteLine("Основной поток продолжается");
-            //Thread.Sleep(5000);
+            Parallel.Invoke(() => 
+            {
+                Console.WriteLine(DateTime.Now);
+                Random rand = new Random();
+                mas1 = new int[N, N];
+                int k;
+                for (int i = 0; i < N; i++)
+                    for (int j = 0; j < N; j++)
+                    {
+                        k = rand.Next(0, 10);
+                        mas1[i, j] = k;
+                    }
+            },
+            ()=> 
+            {
+                Console.WriteLine(DateTime.Now);
+                Random rand = new Random();
+                mas2 = new int[N, N];
+                int k;
+                for (int i = 0; i < N; i++)
+                    for (int j = 0; j < N; j++)
+                    {
+                        k = rand.Next(0, 10);
+                        mas2[i, j] = k;
+                    }
+            });
+            MasMultiplyAsync(mas1, mas2);
+            Console.WriteLine("Основной поток продолжается");
+            Thread.Sleep(5000);
             #endregion
 
             #region Task2
@@ -54,12 +55,6 @@ namespace HW6
             {
                 OpenFileForReadingAndCountAsync(fileName);
             }  
-
-
-
-
-
-
             #endregion
         }
 
@@ -152,24 +147,27 @@ namespace HW6
                 if (str[0] == '1')
                 {
                     result = k_1 * k_2;
-                    Console.WriteLine("Умножение {0}", result);
+                    Console.WriteLine(result);
                 }
                 else
                 {
-                    Console.WriteLine("Деление");
+                    result = k_1 * k_2;
+                    Console.WriteLine(result);
                 }
                 reader?.Close();
-
+                sem.WaitOne();
                 WriteResultInFileAsync(result);
+                sem.Release();
             }
         } 
         static void WriteResultInFile(double result)
         {
-            using (StreamWriter writer = new StreamWriter("Result.txt", true))
+            using (StreamWriter writer = new StreamWriter("Result.dat", true))
             {
                 writer.WriteLine(result);
                 writer?.Close();
             }
+            
         }
 
         static async void WriteResultInFileAsync(double result)
@@ -178,7 +176,9 @@ namespace HW6
         }
         static async void OpenFileForReadingAndCountAsync(string fileName)
         {
+           
             await Task.Run(() => OpenFileForReadingAndCount(fileName));
+            
         }
         #endregion
     }
