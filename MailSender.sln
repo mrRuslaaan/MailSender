@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender", "MailSender\MailSender.csproj", "{519271A6-8BAF-45A0-9321-280545DD611C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{97BBE4B4-8F98-4711-B0F8-B45C54D6DDD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{97BBE4B4-8F98-4711-B0F8-B45C54D6DDD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework5", "Homework5", "{2FB5CB8F-674C-41D4-AED7-595A4CF1FA76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW5", "HW5\HW5.csproj", "{EEC53A36-8DFD-4129-B67D-25289D974F9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{97BBE4B4-8F98-4711-B0F8-B45C54D6DDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97BBE4B4-8F98-4711-B0F8-B45C54D6DDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97BBE4B4-8F98-4711-B0F8-B45C54D6DDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC53A36-8DFD-4129-B67D-25289D974F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC53A36-8DFD-4129-B67D-25289D974F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC53A36-8DFD-4129-B67D-25289D974F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC53A36-8DFD-4129-B67D-25289D974F9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EEC53A36-8DFD-4129-B67D-25289D974F9E} = {2FB5CB8F-674C-41D4-AED7-595A4CF1FA76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1E7F33C-1BB3-4511-8F4A-6D0CA3432F86}
